@@ -28,7 +28,7 @@ func GenerateShortLink() string {
 }
 
 func InitDB() {
-	rdb = redis.NewClient(&redis.Options{Addr: "localhost:6379", DB: 0})
+	rdb = redis.NewClient(&redis.Options{Addr: "redis_cache:6379", DB: 0})
 
 	ctx := context.Background()
 	_, err := rdb.Ping(ctx).Result()

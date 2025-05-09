@@ -23,7 +23,7 @@ import (
 
 var (
 	rdb = redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
+		Addr: "redis_cache:6379",
 	})
 	ctx = context.Background()
 )

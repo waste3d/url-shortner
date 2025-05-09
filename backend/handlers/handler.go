@@ -35,7 +35,7 @@ func CreateLink(ctx *gin.Context) {
 	// Проверка на уникальность shortened ID
 	if input.Shortened != "" {
 		existingLink, err := linkRepo.GetLinkByShortened(input.Shortened)
-		if err == nil && existingLink != nil {
+		if err == nil && existingLink != nil && existingLink.Original != input.Original {
 			// Если ссылка уже существует, подтягиваем время создания из БД
 			log.Println("Short link already exists, fetching creation time from DB")
 			formattedCreatedAt := existingLink.Created_at.Format("02.01.06 15:04")
